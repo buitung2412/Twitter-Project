@@ -1,0 +1,21 @@
+const mogoose = require('mongoose');
+
+const connectDB = async () => 
+{
+    try 
+    {
+        const conn = await mogoose.connect(process.env.DB_URI, 
+        {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        })
+        console.log("DB connection successfully");
+    } 
+    catch (error) 
+    {
+        console.log(error);
+        process.exit(1)
+    }
+}
+
+module.exports = { connectDB}
